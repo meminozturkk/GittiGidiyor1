@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GittiGidiyor1.Views.AboutPage"
+             xmlns:vm="clr-namespace:GittiGidiyor1.ViewModels"
+             Shell.NavBarIsVisible="False">
+    
+    <ContentPage.BindingContext>
+        <vm:AboutViewModel />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#ffff</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackLayout BackgroundColor="White" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
+                    <Image Source="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/GittiGidiyor_logo.svg/1280px-GittiGidiyor_logo.svg.png" VerticalOptions="Center" HeightRequest="64" />
+                </ContentView>
+            </StackLayout>
+            
+            <Frame
+                 Grid.Row="1"
+                 HasShadow="True"
+                 CornerRadius="15"
+                 VerticalOptions="CenterAndExpand"
+                 HorizontalOptions="CenterAndExpand"
+                 HeightRequest="50"
+                 Padding="0"
+                 Margin="5,2"
+                >
+                <StackLayout>
+                    <SearchBar  
+                        x:Name="searchBar"
+                        Placeholder="Kesfetmeye Bak"
+                        BackgroundColor="White"
+                        CancelButtonColor="Red"
+                        PlaceholderColor="Gray"
+                        TextColor="Black"
+                        TextTransform="Lowercase"
+                        FontSize="Medium"
+                        VerticalOptions="CenterAndExpand"
+                        HorizontalOptions="CenterAndExpand"/>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+        
+        <ScrollView Padding="0" Grid.Row="1" Orientation="Vertical" >
+            <StackLayout >
+
+              
+                <Grid
+                        Margin="0,2"
+                        HorizontalOptions="Center"
+                        HeightRequest="60"
+                        VerticalOptions="Center">
+                    <CollectionView
+                        ItemsLayout="HorizontalList"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">
+                        <CollectionView.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Item One</x:String>
+                                <x:String>Item Two</x:String>
+                                <x:String>Item Three</x:String>
+                                <x:String>Item Three</x:String>
+                                <x:String>Item Three</x:String>
+                                <x:String>Item Three</x:String>
+                                <x:String>Item Three</x:String>
+                                <x:String>Item Three</x:String>
+                            </x:Array>
+                        </CollectionView.ItemsSource>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Padding="20,0">
+                                    <Frame
+                                    VerticalOptions="Center"
+                                    HasShadow="True"
+                                    CornerRadius="30"
+                                    HeightRequest="50"
+                                    Padding="3"
+                                    WidthRequest="140">
+                                        <Grid ColumnDefinitions="Auto,Auto" ColumnSpacing="10">
+                                            <Frame
+                                          Grid.Column="0"
+                                          CornerRadius="50"
+                                          Padding="0">
+                                                <Image 
+                                            Aspect="AspectFill"
+                                            Source="https://picsum.photos/40/40"
+                                            HorizontalOptions="Start"
+                                            HeightRequest="50"
+                                            WidthRequest="50">
+                                                </Image>
+                                            </Frame>
+                                            <Label
+                                            Grid.Column="1"
+                                            Text="deneme"
+                                            VerticalOptions="Center"
+                                            HorizontalOptions="Center"/>
+                                        </Grid>
+                                    </Frame>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+                <Grid RowDefinitions="Auto,Auto" HeightRequest="700">
+                    <Grid ColumnDefinitions="Auto, *" Grid.Row="0">
+                        <Label
+                        Grid.Column="0"
+                        Margin="16,10,0,0"
+                        FontAttributes="Bold"
+                        FontSize="Medium"
+                        Text="Yildiz Firsatlar"
+                         />
+                        <Label
+                        Grid.Column="1"
+                        VerticalOptions="Center"
+                        
+                        
+                        HorizontalTextAlignment="End"
+                        FontSize="Medium"
+                        Margin="10,0"
+                        />
+                    </Grid>
+
+                    <CollectionView
+                        Grid.Row="1"
+                                    HeightRequest="225"
+                                    WidthRequest="150"
+                                    ItemsLayout="HorizontalList"
+                                    VerticalOptions="Start">
+                        <CollectionView.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Item One</x:String>
+                                <x:String>Item Two</x:String>
+                                <x:String>Item Three</x:String>
+                                <x:String>Item Four</x:String>
+                                <x:String>Item Fifth</x:String>
+                                <x:String>Item Sixth</x:String>
+                            </x:Array>
+                        </CollectionView.ItemsSource>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Padding="8,4">
+                                    <Frame
+                                        Padding="0"
+                                        BackgroundColor="{StaticResource SoftGreyColor}"
+                                        WidthRequest="150"
+                                        CornerRadius="8"
+                                        HasShadow="False"                                        
+                                        IsClippedToBounds="True">
+                                        <Image
+                                            Aspect="AspectFill"
+                                            Source="https://picsum.photos/150/225"/>
+                                    </Frame>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+
+</ContentPage>
