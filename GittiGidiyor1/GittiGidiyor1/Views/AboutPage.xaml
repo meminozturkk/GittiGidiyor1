@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GittiGidiyor1.Views.AboutPage"
              xmlns:vm="clr-namespace:GittiGidiyor1.ViewModels"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              Shell.NavBarIsVisible="False">
     
     <ContentPage.BindingContext>
@@ -23,10 +24,9 @@
         <StackLayout BackgroundColor="White" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
                 <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
-                    <Image Source="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/GittiGidiyor_logo.svg/1280px-GittiGidiyor_logo.svg.png" VerticalOptions="Center" HeightRequest="64" />
+                    <Image Source="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/GittiGidiyor_logo.svg/1280px-GittiGidiyor_logo.svg.png" VerticalOptions="Center" HeightRequest="50" WidthRequest="250" />
                 </ContentView>
             </StackLayout>
-            
             <Frame
                  Grid.Row="1"
                  HasShadow="True"
@@ -34,6 +34,7 @@
                  VerticalOptions="CenterAndExpand"
                  HorizontalOptions="CenterAndExpand"
                  HeightRequest="50"
+                 WidthRequest="500"
                  Padding="0"
                  Margin="5,2"
                 >
@@ -47,16 +48,81 @@
                         TextColor="Black"
                         TextTransform="Lowercase"
                         FontSize="Medium"
-                        VerticalOptions="CenterAndExpand"
-                        HorizontalOptions="CenterAndExpand"/>
+                        VerticalOptions="StartAndExpand"
+                        HorizontalOptions="StartAndExpand"
+                        />
+                  
                 </StackLayout>
             </Frame>
         </StackLayout>
         
         <ScrollView Padding="0" Grid.Row="1" Orientation="Vertical" >
-            <StackLayout >
-
               
+            
+            <StackLayout >
+                <StackLayout>
+                    <xct:TabView
+                        IsTabStripVisible="True"
+                        TabIndicatorColor="Black"
+                        TabIndicatorWidth="80"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        TabIndicatorHeight="4"
+                        IsSwipeEnabled="False"
+                        TabStripHeight="100"
+                        TabStripPlacement="Top"
+                >
+                        <xct:TabViewItem
+                            Text="Kampanyalar">
+                        </xct:TabViewItem>
+                        
+                        <xct:TabViewItem
+                           
+                            Text="Super Fiyatlar">
+                            
+                        </xct:TabViewItem>
+                        <xct:TabViewItem
+                           
+                            Text="Kesfet">
+                            
+                        </xct:TabViewItem>
+                    </xct:TabView>
+                    <CollectionView
+                        Grid.Row="1"
+                                    HeightRequest="225"
+                                    WidthRequest="150"
+                                    ItemsLayout="HorizontalList"
+                                    VerticalOptions="FillAndExpand">
+                        <CollectionView.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Item One</x:String>
+                                <x:String>Item Two</x:String>
+                                <x:String>Item Three</x:String>
+                                <x:String>Item Four</x:String>
+                                <x:String>Item Fifth</x:String>
+                                <x:String>Item Sixth</x:String>
+                            </x:Array>
+                        </CollectionView.ItemsSource>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Padding="8,4">
+                                    <Frame
+                                        Padding="0"
+                                        BackgroundColor="Beige"
+                                        WidthRequest="400"
+                                        CornerRadius="8"
+                                        HasShadow="False"                                        
+                                        IsClippedToBounds="True">
+                                        <Image
+                                            Aspect="Fill"
+                                            Source="https://cdn.pixabay.com/photo/2019/10/04/17/30/night-4526128__340.jpg"/>
+                                    </Frame>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                </StackLayout>
                 <Grid
                         Margin="0,2"
                         HorizontalOptions="Center"
@@ -80,38 +146,39 @@
                         </CollectionView.ItemsSource>
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <Grid Padding="20,0">
+                                <Grid Padding="10,0">
                                     <Frame
                                     VerticalOptions="Center"
                                     HasShadow="True"
                                     CornerRadius="30"
                                     HeightRequest="50"
                                     Padding="3"
-                                    WidthRequest="140">
-                                        <Grid ColumnDefinitions="Auto,Auto" ColumnSpacing="10">
-                                            <Frame
-                                          Grid.Column="0"
-                                          CornerRadius="50"
-                                          Padding="0">
+                                    WidthRequest="120">
+                                        <Grid ColumnDefinitions="Auto" ColumnSpacing="10">
+                                            
+                                          
                                                 <Image 
-                                            Aspect="AspectFill"
-                                            Source="https://picsum.photos/40/40"
-                                            HorizontalOptions="Start"
-                                            HeightRequest="50"
-                                            WidthRequest="50">
+                                            Aspect="Fill"
+                                            Source="https://icons.iconarchive.com/icons/treetog/junior/128/camera-icon.png"
+                                            HorizontalOptions="CenterAndExpand"
+                                            VerticalOptions="CenterAndExpand"
+                                            HeightRequest="40"
+                                            WidthRequest="40">
                                                 </Image>
-                                            </Frame>
+                                            
                                             <Label
-                                            Grid.Column="1"
-                                            Text="deneme"
+                                            Grid.Row="1"
+                                            Grid.Column="0"
+                                            Text="  en cok bakilanlar"
                                             VerticalOptions="Center"
-                                            HorizontalOptions="Center"/>
+                                            HorizontalOptions="EndAndExpand"/>
                                         </Grid>
                                     </Frame>
                                 </Grid>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
+
                 </Grid>
                 <Grid RowDefinitions="Auto,Auto" HeightRequest="700">
                     <Grid ColumnDefinitions="Auto, *" Grid.Row="0">
@@ -154,14 +221,14 @@
                                 <Grid Padding="8,4">
                                     <Frame
                                         Padding="0"
-                                        BackgroundColor="{StaticResource SoftGreyColor}"
+                                        BackgroundColor="Gray"
                                         WidthRequest="150"
                                         CornerRadius="8"
                                         HasShadow="False"                                        
                                         IsClippedToBounds="True">
                                         <Image
-                                            Aspect="AspectFill"
-                                            Source="https://picsum.photos/150/225"/>
+                                            Aspect="Fill"
+                                            Source="https://cdn.pixabay.com/photo/2020/01/22/18/23/istanbul-4785964__480.jpg"/>
                                     </Frame>
                                 </Grid>
                             </DataTemplate>
