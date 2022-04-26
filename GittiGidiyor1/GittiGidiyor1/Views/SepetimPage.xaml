@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GittiGidiyor1.Views.SepetimPage"
+             Title="Sepetim"
+             
+             >
+
+    <ContentPage.Content>
+        <Grid RowDefinitions="6*,*" >
+            <ScrollView
+                    Grid.Row="0">
+                <ListView
+                    
+                    
+                    HasUnevenRows="True"
+                    SeparatorVisibility="Default"
+                    SeparatorColor="Blue"
+                    SelectionMode="None"
+                    Margin="0,6">
+                    
+                </ListView>
+            </ScrollView>
+            <StackLayout
+                
+               Orientation="Horizontal"
+                HeightRequest="200"
+                VerticalOptions="Start"
+                HorizontalOptions="Start"
+                Grid.Row="3"
+                BackgroundColor="WhiteSmoke"
+                
+                >
+
+                <Frame 
+                       HeightRequest="200"
+                       WidthRequest="200"
+                       BackgroundColor="Transparent"
+                       HorizontalOptions="StartAndExpand"
+                       VerticalOptions="StartAndExpand">
+                    <StackLayout Margin="-20"
+                        HeightRequest="200"
+                        WidthRequest="200"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Start">
+                        <Label
+                            
+                            Text="Odenecek Tutar"
+                            FontSize="Subtitle"
+                            WidthRequest="200"
+                            HeightRequest="200"
+                            TextColor="Black"
+                            FontAttributes="None"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Start"
+                            BackgroundColor="Transparent"
+                            />
+                        <!--Clicked="Button_Clicked" eklenecek-->
+                        
+                        <Button
+                            Margin="-20,-10"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Start"
+                            Text="0,00₺"
+                            
+                            FontAttributes="Bold"
+                            FontSize="Title"
+                            BackgroundColor="Transparent" 
+                            TextColor="Black"
+                            WidthRequest="150"
+                        />
+                        
+                    </StackLayout>
+                   
+
+
+                </Frame>
+                   
+
+                
+
+                <Button
+                    x:Name="buttonOde"
+                    Text="Alisverisi Tamamla"
+                    WidthRequest="175"
+                    HeightRequest="50"
+                    CornerRadius="10"
+                    Padding="2"
+                    FontAttributes="Bold"
+                    FontSize="Default"
+                    BackgroundColor="Blue"
+                    BorderWidth="3"
+                    
+                    
+                    TextColor="White"
+                    VerticalOptions="CenterAndExpand"/>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

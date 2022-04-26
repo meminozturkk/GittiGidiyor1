@@ -7,38 +7,64 @@
              xmlns:model="clr-namespace:GittiGidiyor1.Models"  
              x:Name="BrowseItemsPage">
 
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Command="{Binding AddItemCommand}" />
-    </ContentPage.ToolbarItems>
-    <!--
-      x:DataType enables compiled bindings for better performance and compile time validation of binding expressions.
-      https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/data-binding/compiled-bindings
-    -->
-    <RefreshView x:DataType="local:ItemsViewModel" Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
-        <CollectionView x:Name="ItemsListView"
-                ItemsSource="{Binding Items}"
-                SelectionMode="None">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <StackLayout Padding="10" x:DataType="model:Item">
-                        <Label Text="{Binding Text}" 
-                            LineBreakMode="NoWrap" 
-                            Style="{DynamicResource ListItemTextStyle}" 
-                            FontSize="16" />
-                        <Label Text="{Binding Description}" 
-                            LineBreakMode="NoWrap"
-                            Style="{DynamicResource ListItemDetailTextStyle}"
-                            FontSize="13" />
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer 
-                                NumberOfTapsRequired="1"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:ItemsViewModel}}, Path=ItemTapped}"		
-                                CommandParameter="{Binding .}">
-                            </TapGestureRecognizer>
-                        </StackLayout.GestureRecognizers>
-                    </StackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </RefreshView>
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto,Auto">
+            <!--TitileView Piece-->
+            <Grid RowDefinitions="Auto,Auto" Grid.Row="0" BackgroundColor="White">
+                <Image Grid.Row="0" Source="logo.png" HeightRequest="10" BackgroundColor="Transparent"/>
+
+                <SearchBar Grid.Row="1" Placeholder="Search items..."
+                        HeightRequest="30"
+                           CancelButtonColor="Black"
+                           PlaceholderColor="Black"
+                           TextColor="Black"
+                           TextTransform="Lowercase"
+                           HorizontalTextAlignment="Center"
+                           FontSize="Medium"
+                           FontAttributes="Italic" />
+                <!--<ListView Grid.Row="2" x:Name="searchResults" SizeChanged="searchResults_SizeChanged"/>-->
+            </Grid>
+            <ScrollView
+                BackgroundColor="White"
+                Grid.Row="1"
+                 Orientation="Vertical">
+                <ListView x:Name="listview" Header="" 
+                           
+                          SeparatorVisibility="Default"  
+                         >
+                    <ListView.HeaderTemplate>
+                        <DataTemplate>
+                            <ContentView BackgroundColor="White">
+                                <Label Margin="10" 
+                                       HorizontalOptions="StartAndExpand" 
+                                       FontSize="Default" 
+                                       Text="Kategoriler"  
+                                       HeightRequest="30"
+                                       TextColor="Black"/>
+                            </ContentView>
+                        </DataTemplate>
+                    </ListView.HeaderTemplate>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid ColumnDefinitions="Auto,*">
+                                    <Label Grid.Column="0" Text="kategori" VerticalOptions="Center" TextColor="Black" Margin="15,0"  />
+                                    <Label
+                                        Grid.Column="1"
+                                        FontFamily="FAsolid"
+                                        VerticalOptions="Center"
+                                        Text="deneme"
+                                        TextColor="Black"
+                                        HorizontalTextAlignment="End"
+                                        FontSize="Small"
+                                        Margin="15,0"
+                                        />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
 </ContentPage>
